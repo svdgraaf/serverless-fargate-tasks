@@ -59,8 +59,8 @@ You can override the generated CF resource properties per task with the `overrid
 custom:
   fargate:
     tasks:
-      tracker-nl:
-        image: 877545977369.dkr.ecr.eu-west-1.amazonaws.com/dd-test
+      my-task:
+        image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
 
         # these are all optional
         override:
