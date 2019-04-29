@@ -8,7 +8,7 @@ The (minimal) config is as follows:
 ```
 custom:
   fargate:
-    network:
+    vpc:
       subnets:
         - subnet-1234
         - subnet-5678
@@ -32,7 +32,7 @@ custom:
     # role for your account
     role: arn:aws:iam::123456789369:role/ecsTaskExecutionRole
 
-    network:
+    vpc:
       public-ip: DISABLED  # optional, defaults to disabled
       subnets:
         - subnet-1234
@@ -70,7 +70,7 @@ custom:
             Foo: Bar
           service:
             Foo: BAR
-          network:
+          vpc:
             Foo: BAR
           role: ARN
 ```
