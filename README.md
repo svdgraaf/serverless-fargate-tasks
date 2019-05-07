@@ -42,6 +42,7 @@ custom:
 
     tasks:
       my-task:
+        name: ${self:service}-${self:provider.stage}-my-task # default name is be the object key (here 'my-task')
         image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
         environment:  # optional
           platypus: true
