@@ -48,6 +48,8 @@ custom:
           platypus: true
           # local variables will always override global ones
           foo: wut
+          # you can also use cloudformation references with eg serverless-pseudo-parameters
+          myArn: #{MyResource.Arn}
         cpu: 512  # optional, defaults to 25% -> 256, see cloudformation docs for valid values
         memory: 1GB  # optional, defaults to 0.5GB
 ```
