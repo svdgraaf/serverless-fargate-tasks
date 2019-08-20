@@ -61,6 +61,10 @@ You can override the generated CF resource properties per task with the `overrid
 ```
 custom:
   fargate:
+    override:
+        cluster:
+            Foo: bar
+
     tasks:
       my-task:
         image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
