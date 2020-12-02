@@ -52,8 +52,15 @@ custom:
           myArn: #{MyResource.Arn}
         cpu: 512  # optional, defaults to 25% -> 256, see cloudformation docs for valid values
         memory: 1GB  # optional, defaults to 0.5GB
-        noService: true # optional, defaults to false.
+        no-service: true # optional, defaults to false.
                         # If set to `true`, will not create ECS service - tasks may then be executed using AWS API via `run-task`instead.
+      
+      my-scheduled-task:
+        image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
+        schedule: # If schedule is set, no-service is automatically set to 'true'
+          expression: 'cron(0 12 * * ? *)' # See https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html for more options.
+          task-count: 2
+          platform-version: 1.4.0 #Defaults to 'LATEST' which is 1.3.0 as of now. 1.3.0 does not support ECS volumes.
 ```
 
 Advanced usage
