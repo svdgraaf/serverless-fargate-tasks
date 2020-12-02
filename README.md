@@ -52,6 +52,8 @@ custom:
           myArn: #{MyResource.Arn}
         cpu: 512  # optional, defaults to 25% -> 256, see cloudformation docs for valid values
         memory: 1GB  # optional, defaults to 0.5GB
+        noService: true # optional, defaults to false.
+                        # If set to `true`, will not create ECS service - tasks may then be executed using AWS API via `run-task`instead.
 ```
 
 Advanced usage
