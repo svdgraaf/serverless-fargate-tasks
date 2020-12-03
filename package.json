@@ -1,6 +1,6 @@
 {
   "bugs": {
-    "url": ""
+    "url": "https://github.com/RoundingWellOS/serverless-fargate-tasks"
   },
   "description": "Run and configure Fargate tasks from within your serverless project",
   "devDependencies": {},
@@ -10,9 +10,9 @@
   "name": "serverless-fargate-tasks",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/svdgraaf/serverless-fargate-tasks.git"
+    "url": "git+https://github.com/RoundingWellOS/serverless-fargate-tasks.git"
   },
   "scripts": {
   },
-  "version": "0.5.0"
+  "version": "0.5.1"
 }
