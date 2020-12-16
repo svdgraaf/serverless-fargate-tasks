@@ -61,6 +61,15 @@ custom:
           expression: 'cron(0 12 * * ? *)' # See https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html for more options.
           task-count: 2
           platform-version: 1.4.0 #Defaults to 'LATEST' which is 1.3.0 as of now. 1.3.0 does not support ECS volumes.
+
+      # You can register services with Application or Network Load Balancer target groups
+      my-task-with-load-balancers:
+        image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
+        loadBalancers:
+          - port: 8080
+            arn: ${self:custom.httpTargetGroupArn}
+          - port 8443
+            arn: ${self:custom.httpsTargetGroupArn}
 ```
 
 Advanced usage
