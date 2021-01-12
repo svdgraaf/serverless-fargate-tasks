@@ -66,10 +66,18 @@ custom:
       my-task-with-load-balancers:
         image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
         loadBalancers:
-          - port: 8080
+          # You can use the arn of an existing target group already associated with a load balancer
+          - hostPort: 8080
+            containerPort: 8080
             arn: ${self:custom.httpTargetGroupArn}
-          - port 8443
-            arn: ${self:custom.httpsTargetGroupArn}
+          # If you're using an ELB/target group that you're building in the Resources section of
+          # serverless.yml, you may run into an issue where the elb and default listener rule are
+          # not created prior to the target group/service. In this scenario you can specify the 
+          # logical name of the resource so that the appropriate dependencies can be set.
+          - hostPort: 8443
+            containerPort: 8443
+            arn: ${self:custom.httpsTargetGroupArn} 
+            elbResource: "my-task-elb"
 ```
 
 Advanced usage
