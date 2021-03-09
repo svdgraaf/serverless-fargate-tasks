@@ -8,11 +8,6 @@ The (minimal) config is as follows:
 ```
 custom:
   fargate:
-    vpc:
-      subnets:
-        - subnet-1234
-        - subnet-5678
-
     tasks:
       my-task:
         image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
@@ -31,14 +26,6 @@ custom:
     # you can set the execution role that will be used, this will default to the default
     # role for your account
     role: arn:aws:iam::123456789369:role/ecsTaskExecutionRole
-
-    vpc:
-      public-ip: DISABLED  # optional, defaults to disabled
-      subnets:
-        - subnet-1234
-        - subnet-5678
-      security-groups:  # optional, defaults to vpc default
-        - sg-123456678
 
     tasks:
       my-task:

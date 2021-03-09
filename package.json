@@ -10,9 +10,9 @@
   "name": "serverless-fargate-tasks",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/svdgraaf/serverless-fargate-tasks.git"
+    "url": "git+https://github.com/MarletteFunding/serverless-fargate-tasks.git"
   },
   "scripts": {
   },
-  "version": "0.4.1"
+  "version": "0.5.0"
 }
