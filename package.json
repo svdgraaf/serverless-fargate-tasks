@@ -12,7 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/MarletteFunding/serverless-fargate-tasks.git"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "version": "0.5.0"
 }

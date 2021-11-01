@@ -8,6 +8,8 @@ The (minimal) config is as follows:
 ```
 custom:
   fargate:
+    role: arn:aws:iam::123456789369:role/myRole
+  
     tasks:
       my-task:
         image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
@@ -23,13 +25,11 @@ custom:
     environment:
       foo: bar
 
-    # you can set the execution role that will be used, this will default to the default
-    # role for your account
-    role: arn:aws:iam::123456789369:role/ecsTaskExecutionRole
+    role: arn:aws:iam::123456789369:role/myRole
 
     tasks:
       my-task:
-        name: ${self:service}-${self:provider.stage}-my-task # default name is be the object key (here 'my-task')
+        name: ${self:service}-${self:provider.stage}-my-task # default will be ${self:service}-${self:provider.stage}-{task-key-here}
         image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
         environment:  # optional
           platypus: true
@@ -37,17 +37,19 @@ custom:
           foo: wut
           # you can also use cloudformation references with eg serverless-pseudo-parameters
           myArn: #{MyResource.Arn}
-        cpu: 512  # optional, defaults to 25% -> 256, see cloudformation docs for valid values
-        memory: 1GB  # optional, defaults to 0.5GB
+        cpu: 512  # optional, defaults to 100% -> 1024, see cloudformation docs for valid values
+        memory: 2.0GB  # optional, defaults to 1.0GB
 ```
 
 Advanced usage
 --------------
-You can override the generated CF resource properties per task with the `override` properties:
+You can override the generated CF task, container, and role properties per task with the `override` properties:
 
 ```
 custom:
   fargate:
+    role: arn:aws:iam::123456789369:role/myRole
+    
     tasks:
       my-task:
         image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
@@ -58,9 +60,5 @@ custom:
             Foo: BAR
           container:
             Foo: Bar
-          service:
-            Foo: BAR
-          vpc:
-            Foo: BAR
           role: ARN
 ```
