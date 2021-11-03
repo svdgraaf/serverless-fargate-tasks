@@ -56,6 +56,7 @@ custom:
       essential: true  # Optional, marks container as essential. Default is false.
       cpu: 10  # Optional, sets the CPU units for the individual container. Defaults to DataDog recommended 10 units.
       memory: 256  # Optional, sets the soft memory limit for the individual container. Defaults to DataDog recommended 256. 
+      statsd_enabled: true  # Optional, sets agent to listen to DogStatsD packets on port 8125 from other containers. Default is false.
       
     tasks:
       my-task:
