@@ -5,7 +5,7 @@ With this plugin it's fairly easy to setup a (long running) task which would hoo
 
 The (minimal) config is as follows:
 
-```
+```yaml
 custom:
   fargate:
     role: arn:aws:iam::123456789369:role/myRole
@@ -17,7 +17,7 @@ custom:
 
 Of course, you can customize to your hearts desire, here are all the available options:
 
-```
+```yaml
 custom:
   fargate:
     # you can put global environment variables here, these will be added
@@ -41,11 +41,34 @@ custom:
         memory: 2.0GB  # optional, defaults to 1.0GB
 ```
 
+### Add DataDog Integration
+Datadog can collect CloudWatch container insights by default, however Fargate tasks that don't run in a service
+(e.g., on-demand ephemeral tasks) don't log their metrics. You can easily install the DataDog Fargate agent with the
+following options:
+
+```yaml
+custom:
+  fargate:
+    role: arn:aws:iam::123456789369:role/myRole
+    
+    datadog:
+      ssm_api_key: /datadog/api_key  # Replace with the name of your SSM parameter (if in same account as the task), or full ARN
+      essential: true  # Optional, marks container as essential. Default is false.
+      cpu: 10  # Optional, sets the CPU units for the individual container. Defaults to DataDog recommended 10 units.
+      memory: 256  # Optional, sets the soft memory limit for the individual container. Defaults to DataDog recommended 256. 
+      
+    tasks:
+      my-task:
+        image: 123456789369.dkr.ecr.eu-west-1.amazonaws.com/my-image
+```
+
+You must ensure the role used for the task has `ssm:GetParameters` on the DataDog API Key SSM parameter.
+
 Advanced usage
 --------------
 You can override the generated CF task, container, and role properties per task with the `override` properties:
 
-```
+```yaml
 custom:
   fargate:
     role: arn:aws:iam::123456789369:role/myRole
