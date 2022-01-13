@@ -38,7 +38,7 @@ custom:
           # you can also use cloudformation references with eg serverless-pseudo-parameters
           myArn: #{MyResource.Arn}
         cpu: 512  # optional, defaults to 100% -> 1024, see cloudformation docs for valid values
-        memory: 2.0GB  # optional, defaults to 1.0GB
+        memory: 2.0GB  # optional, defaults to 2.0GB
 ```
 
 ### Add DataDog Integration
